@@ -83,13 +83,6 @@ git submodule update --init --recursive
 
 Install dependencies for each service.
 
-### Gateway
-
-```
-cd backend/gateway
-npm install
-```
-
 ### Product Service
 
 ```
@@ -101,6 +94,13 @@ npm install
 
 ```
 cd backend/order-service
+npm install
+```
+
+### Gateway
+
+```
+cd backend/gateway
 npm install
 ```
 
