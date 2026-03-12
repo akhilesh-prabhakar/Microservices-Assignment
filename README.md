@@ -1,88 +1,77 @@
 # Microservices Assignment
 
-This project demonstrates a **microservices architecture** using Node.js, gRPC, and an API Gateway with a Next.js frontend.
+This project demonstrates a **Node.js microservices architecture** using an **API Gateway + gRPC communication** with a **Next.js frontend**.
 
-## Architecture
+---
 
+# Architecture
+
+```
 Frontend (Next.js + MUI)
-|
-v
-API Gateway (REST)
-|
-v
+        |
+        v
+API Gateway (REST + Auth)
+        |
+        v
 gRPC Communication
-/            |             
-Auth Service   Product Service   Order Service
+   /              \
+Product Service   Order Service
+```
 
-The API Gateway exposes REST APIs to the frontend and communicates with backend microservices using **gRPC**.
+The **API Gateway** handles:
+
+* Authentication (Signup/Login)
+* Request routing
+* Communication with backend services via **gRPC**
 
 ---
 
 # Repository Structure
 
 ```
-assignments/
+Microservices-Assignment/
    backend/
       gateway/
-      auth-service/
       product-service/
       order-service/
    frontend/
 ```
 
-### Backend Services
-
-| Service         | Description                             |
-| --------------- | --------------------------------------- |
-| Gateway         | Entry point for all API requests        |
-| Auth Service    | Handles signup/login and authentication |
-| Product Service | CRUD operations for products            |
-| Order Service   | CRUD operations for orders              |
-
-### Frontend
-
-Next.js application providing:
-
-* Home page
-* Sign Up
-* Sign In
-* Dashboard
-* Product management
-* Order management
+| Component       | Description                                       |
+| --------------- | ------------------------------------------------- |
+| Gateway         | Entry point for all API requests + authentication |
+| Product Service | CRUD operations for products                      |
+| Order Service   | CRUD operations for orders                        |
+| Frontend        | Next.js UI for interacting with the system        |
 
 ---
 
 # Tech Stack
 
-Backend
+### Backend
 
 * Node.js
 * Express
 * gRPC
 * JWT Authentication
 
-Frontend
+### Frontend
 
 * Next.js
 * Material UI
 * Axios
 
-Infrastructure
-
-* Microservices Architecture
-* API Gateway Pattern
-
 ---
 
-# Setup Instructions
+# Clone the Project
 
-Clone the parent repository:
+Clone with submodules:
 
 ```
-git clone --recurse-submodules https://github.com/YOUR_USERNAME/assignments
+git clone --recurse-submodules https://github.com/YOUR_USERNAME/Microservices-Assignment
 ```
 
-If submodules are not cloned:
+If already cloned:
 
 ```
 git submodule update --init --recursive
@@ -90,31 +79,62 @@ git submodule update --init --recursive
 
 ---
 
-# Running the Backend
+# Installation
 
-Start services individually:
+Install dependencies for each service.
 
-```
-cd backend/auth-service
-npm install
-npm run dev
-```
-
-```
-cd backend/product-service
-npm install
-npm run dev
-```
-
-```
-cd backend/order-service
-npm install
-npm run dev
-```
+### Gateway
 
 ```
 cd backend/gateway
 npm install
+```
+
+### Product Service
+
+```
+cd backend/product-service
+npm install
+```
+
+### Order Service
+
+```
+cd backend/order-service
+npm install
+```
+
+### Frontend
+
+```
+cd frontend
+npm install
+```
+
+---
+
+# Running the Backend Services
+
+Start services in **separate terminals**.
+
+### 1️⃣ Start Product Service
+
+```
+cd backend/product-service
+npm run dev
+```
+
+### 2️⃣ Start Order Service
+
+```
+cd backend/order-service
+npm run dev
+```
+
+### 3️⃣ Start API Gateway
+
+```
+cd backend/gateway
 npm run dev
 ```
 
@@ -124,7 +144,6 @@ npm run dev
 
 ```
 cd frontend
-npm install
 npm run dev
 ```
 
@@ -138,26 +157,50 @@ http://localhost:3000
 
 # Application Flow
 
-1. User opens Home Page
-2. User can Sign Up or Sign In
-3. After authentication user is redirected to Dashboard
-4. From Dashboard user can navigate to:
+1. User opens **Home Page**
+2. User can **Sign Up / Sign In**
+3. After login user is redirected to **Dashboard**
+4. Dashboard allows navigation to:
 
    * Products
    * Orders
 
-Products and Orders support full **CRUD operations**.
+---
+
+# Features
+
+### Authentication
+
+* User Signup
+* User Login
+* JWT Authentication
+
+### Products
+
+* Create Product
+* View Products
+* Update Product
+* Delete Product
+
+### Orders
+
+* Create Order
+* View Orders
+* Update Order
+* Delete Order
 
 ---
 
-# Microservices Communication
+# Microservice Communication
 
+```
 Frontend → API Gateway (REST)
-
-Gateway → Services (gRPC)
+Gateway → Product Service (gRPC)
+Gateway → Order Service (gRPC)
+```
 
 ---
 
 # Author
 
-Microservices Assignment Project
+Microservices Assignment
