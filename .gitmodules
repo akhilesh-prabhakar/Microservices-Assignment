@@ -1,0 +1,9 @@
+[submodule "backend/product-service"]
+	path = backend/product-service
+	url = https://github.com/akhilesh-prabhakar/product-service.git
+[submodule "backend/order-service"]
+	path = backend/order-service
+	url = https://github.com/akhilesh-prabhakar/order-service.git
+[submodule "backend/gateway"]
+	path = backend/gateway
+	url = https://github.com/akhilesh-prabhakar/gateway.git
