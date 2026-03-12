@@ -7,3 +7,6 @@
 [submodule "backend/gateway"]
 	path = backend/gateway
 	url = https://github.com/akhilesh-prabhakar/gateway.git
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/akhilesh-prabhakar/frontend.git
